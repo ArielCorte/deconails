@@ -7,7 +7,7 @@ function finger($num)
     return <<<HTML
     <div class="finger finger-$num">
     <div class="nail nail-$num" style="background-color: {$_GET['bg_color']}">
-        {$GLOBALS['PATTERN_ASOC'][$_GET['pattern']]}
+        {$GLOBALS['PATTERN_ASOC'][$_GET['pattern']]($_GET['pattern_color'])}
     </div>
     </div>
     HTML;

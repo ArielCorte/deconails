@@ -2,7 +2,6 @@
 
 include 'db.php';
 
-$dbConn = connect();
 $sql = $dbConn->prepare('select * from nail_patterns');
 $sql->execute();
 $sql->setFetchMode(PDO::FETCH_ASSOC);
@@ -25,9 +24,17 @@ function saved_finger($sp)
 $saved_finger = 'saved_finger';
 
 foreach ($saved_patterns as $sp) {
+    $queries = $sp;
+    $url = '/?';
+    foreach ($queries as $key => $value) {
+        $url = $url.$key.'='.urlencode($value).'&';
+    }
+
+    $url = substr($url, 0, -1);
+
     $display_saved = $display_saved.<<<HTML
-        <div>
+        <a href=$url>
             {$saved_finger($sp)}
-        </div>
+        </a>
     HTML;
 }

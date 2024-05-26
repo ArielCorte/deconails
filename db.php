@@ -12,3 +12,5 @@ function connect()
         exit($exception->getMessage());
     }
 }
+
+$dbConn = connect();
